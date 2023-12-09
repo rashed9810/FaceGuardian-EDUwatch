@@ -28,7 +28,7 @@ The camera captures color images, however, the proposed contrast improvement met
  
     Figure 3.8 Conversion of Image to Grayscale Image source(https://scikit-image.org/docs/dev/auto_examples/color_exposure/plot_rgb_to_gray.html)
 
-Generally the images that we see are in the form of RGB channels (Red, Green, Blue). So, when OpenCV reads the RGB image, it usually stores the image in BGR (Blue, Green, Red) channel. For image recognition, we need to convert this BGR channel to a gray channel. The reason for this is gray channel is easy to process and is computationally less intensive as it contains only 1-channel of black-white.
+Generally, the images that we see are in the form of RGB channels (Red, Green, Blue). So, when OpenCV reads the RGB image, it usually stores the image in BGR (Blue, Green, Red) channel. For image recognition, we need to convert this BGR channel to a gray channel. The reason for this is gray channel is easy to process and is computationally less intensive as it contains only 1-channel of black-white.
 gray = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)
 Here the parameters to the function cvtColor will be the image variable name (resized in our case) and the COLOR_BGR2GRAY.
 
@@ -52,7 +52,8 @@ The number of cells in the horizontal direction. The more cells, the finer the g
  The number of cells in the vertical direction. The more cells, the finer the grid, and the higher the dimensionality of the resulting feature vector. It is usually set to 8.
 
 Now, using the image generated in the last step, we can use the Grid X and Grid Y parameters to divide the image into multiple grids, as can be seen in the following image:
- 
+ ![image](https://github.com/rashed9810/FaceGuardian-EDUwatch/assets/60478972/98d6f4b6-55e9-45d4-9b21-3a58c8f25dc6)
+
 
 ## Based on the image above, we can extract the histogram of each region as follows:
 •   As we have an image in grayscale, each histogram (from each grid) will contain only 256 positions (0~255) representing the occurrences of each pixel intensity.
@@ -66,6 +67,7 @@ Now, using the image generated in the last step, we can use the Grid X and Grid 
  In this step, the algorithm is already trained. Each histogram created is used to represent each image from the training dataset. So, given an input image, we perform the steps again for this new image and create a histogram that represents the image.
 •   So to find the image that matches the input image we just need to compare two histograms and return the image with the closest histogram.
 •   We can use various approaches to compare the histograms (calculate the distance between two histograms), for example: euclidean distance, chi-square, absolute value, etc. In this example, we can use the Euclidean distance (which is quite known) based on the following formula:
+![image](https://github.com/rashed9810/FaceGuardian-EDUwatch/assets/60478972/14dd22aa-1cc9-4d5e-9cd7-81ca2c4a275e)
 
  
 •   So the algorithm output is the ID from the image with the closest histogram. The algorithm should also return the calculated distance, which can be used as a ‘confidence’ measurement. Note: don’t be fooled about the ‘confidence’ name, as lower confidences are better because it means the distance between the two histograms is closer.
@@ -82,6 +84,40 @@ The admin will be able to log in to the admin module through the main interface.
  
 ##3 3. Report Generation Module: This module will have an interface through which users will be able to view attendance and some information about a student by using their unique student ID number and printing them.
 
+## Interfaces
+![image](https://github.com/rashed9810/FaceGuardian-EDUwatch/assets/60478972/53be075d-ca2a-4e2e-89db-9559c180757d) 
+
+![image](https://github.com/rashed9810/FaceGuardian-EDUwatch/assets/60478972/d100cd1f-16ef-42c4-ae95-f009a644cf91)
+
+
+## Flow model
+
+### Admin Interface:
+![image](https://github.com/rashed9810/FaceGuardian-EDUwatch/assets/60478972/eb929248-ee20-4a2d-903e-63062e938c35) 
+
+### Instructor Interface:
+![image](https://github.com/rashed9810/FaceGuardian-EDUwatch/assets/60478972/ffc31fc7-b200-46f3-ac1b-0ad5d98565ba)
+
+### Student Interface:
+![image](https://github.com/rashed9810/FaceGuardian-EDUwatch/assets/60478972/5a65f5e0-4bbd-4dd4-bb7b-3e21c8ec1777)
+
+### Use case
+![image](https://github.com/rashed9810/FaceGuardian-EDUwatch/assets/60478972/9dcbdbbf-7be6-40e2-978e-854f011c553b)
+
+### Activity diagram
+![image](https://github.com/rashed9810/FaceGuardian-EDUwatch/assets/60478972/9168e14a-11d3-4df2-bef7-6e1958e8f127)
+
+### Swimline diagram
+![image](https://github.com/rashed9810/FaceGuardian-EDUwatch/assets/60478972/6d622816-e2b6-4669-a77d-fb2f2f40c981)
+
+### Architectural Design
+![image](https://github.com/rashed9810/FaceGuardian-EDUwatch/assets/60478972/cbbe478e-3e62-4958-be4f-b0cd19ab6bac) 
+
+### Component Design 
+![image](https://github.com/rashed9810/FaceGuardian-EDUwatch/assets/60478972/b53e5015-c3a6-4818-8c5d-5383e8e428c0) 
+
+### Deployment Design
+![image](https://github.com/rashed9810/FaceGuardian-EDUwatch/assets/60478972/e05a1212-4cc4-4a36-be94-300473a34b29) 
 
 
 
